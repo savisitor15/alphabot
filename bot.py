@@ -130,13 +130,13 @@ def main():
         log.info('-'*30)
         log.info(f'Main guild: {bot.main_guild.name}')
         log.info('-'*30)
-        log.info('Alphabot started successfully')
+        log.info('{bot_prefix} started successfully')
         return True
 
 
-    log.info('Alphabot ready')
+    log.info('{bot_prefix} ready')
     bot.run()
-    log.info('Alphabot has terminated')
+    log.info('{bot_prefix} has terminated')
 
 if __name__=="__main__":
     main()
