@@ -12,7 +12,7 @@ Only users that have an admin role can use the commands.
 import itertools
 from discord import Embed
 from discord.ext import commands
-from discord.ext.commands import HelpCommand, DefaultHelpCommand
+from discord.ext.commands import HelpCommand, DefaultHelpCommand, has_permissions
 
 #pylint: disable=E1101
 
@@ -128,7 +128,10 @@ class Help(commands.Cog):
         )
 
     async def cog_check(self, ctx):
-        return self.client.user_is_admin(ctx.author)
+        if not hasattr(self.client, 'user_is_admin'):
+            return True
+        #return self.client.user_is_admin(ctx.author)
+        return True # this should really be done with has_permission
 
     def cog_unload(self):
         self.client.get_command('help').hidden = False
@@ -138,6 +141,7 @@ class Help(commands.Cog):
         aliases=['halpall'],
         hidden=True
     )
+    @has_permissions(administrator=True)
     async def helpall(self, ctx, *, text=None):
         """Print bot help including all hidden commands"""
         self.client.help_command = myHelpCommand(show_hidden=True)

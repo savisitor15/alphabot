@@ -36,7 +36,7 @@ class Config(dict):
         try:
             with open(self.conf_file) as conf:
                 self.update(json.load(conf))
-        except FileNotFoundError as e:
+        except FileNotFoundError:
             if not self.no_template:
                 self.update(json.loads(self.template))
             self.save()
