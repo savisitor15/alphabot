@@ -12,8 +12,8 @@ Pyro      - https://github.com/Pyroseza
 from aiohttp import ClientSession
 from discord.ext import commands
 from pathlib import Path
-from utils.config import Config
-from utils.context import AlphaCtx
+from cogs.utils.config import Config
+from cogs.utils.context import AlphaCtx
 import json
 import logging
 import logging.config
